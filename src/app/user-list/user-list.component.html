@@ -1,0 +1,59 @@
+<mat-toolbar style="background-color: rgb(64, 118, 218);">
+  <mat-toolbar-row>
+    <span style="color:white">Social Media Posts</span>
+    &nbsp; &nbsp;
+  </mat-toolbar-row>
+
+</mat-toolbar>
+<div class="container">
+  <div class="m-2">
+    <div *ngFor="let item of userList ">
+      <mat-card class="m-2">
+
+        <div class="row">
+          <div class="col-4">
+            <img style="max-height: 150px;"
+              src="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png" class="img-thumbnail"
+              alt="...">
+          </div>
+          <div class="col-4">
+            <h2>{{item.name}}</h2>
+            <p><i class="fa fa-envelope"></i>&nbsp; {{item.email}}
+            </p>
+            <p><i class="fa fa-building-o" aria-hidden="true"></i>
+              &nbsp;{{item?.company?.name}} </p>
+            <p><i class="fa fa-tags" aria-hidden="true"></i> &nbsp; {{item?.company?.catchPhrase}}
+            </p>
+          </div>
+          <div class="col-4">
+            <div class="col">
+              <div>
+                <h1 class="m-2">
+                  <a style="font-size: medium;" target="_blank" [href]="'http://www.'+item.website">{{item.website}}</a>
+                </h1>
+              </div>
+              <div>
+                <button class="m-2 " *ngIf="!item?.isPost" (click)="showPost(item)" mat-raised-button color="primary">Show
+                  Post</button>
+                <button class="m-2" *ngIf="item?.isPost" (click)="hidePost(item)" mat-raised-button color="warn">Hide
+                  Post</button>
+              </div>
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="item?.isPost">
+          <div *ngFor="let post of item?.postList;let i= index">
+            <mat-card class="m-2">
+              <div class="row">
+                <h2>{{i+1}}.&nbsp;{{post?.title}}</h2>
+              </div>
+              <p>{{post?.body}}</p>
+            </mat-card>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+.mat-card:not([class*=mat-elevation-z]) {
+    box-shadow: 0 2px 1px -1px rgb(204, 197, 197), 
+                0 1px 1px 0 rgb(194, 187, 187), 
+                0 1px 3px 0 rgb(223, 213, 213);
+}
+.example-spacer {
+    flex: 1 1 auto;
+  }
